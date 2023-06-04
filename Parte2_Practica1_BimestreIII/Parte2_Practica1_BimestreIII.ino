@@ -1,3 +1,15 @@
+/*
+*Fundacion Kinal
+*Centro Educativo Tecnico Laboral Kinal
+*Electronica
+*Grado: Quinto
+*Seccion: A
+*Cuerso: Taller de Electronica Digital y Reparacion de Computadoras I
+*Nombre: Edgar Leonel Ramírez Estrada
+*Carnet: 209410
+*Proyecto: Practica No.1 parte 2 
+*/
+
 #include <Ticker.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
