@@ -45,7 +45,7 @@ void setup() {
 
 void loop() {
   cel = temperaturaC();
-  isr_temperatura();
+  isr_accion_termometro.update();
   isr_accion_push.update();
 
 }
