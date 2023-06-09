@@ -1,3 +1,14 @@
+/*
+*Fundacion Kinal
+*Centro Educativo Tecnico Laboral Kinal
+*Electronica
+*Grado: Quinto
+*Seccion: A
+*Cuerso: Taller de Electronica Digital y Reparacion de Computadoras I
+*Nombre: Edgar Leonel Ramírez Estrada
+*Carnet: 209410
+*Proyecto: Practica No.2 Control_de_secuencia_de_cololesRGB_con_potenciometro_Ejercicio2
+*/
 //variables//
 #define RED  3
 #define GREEN 5
