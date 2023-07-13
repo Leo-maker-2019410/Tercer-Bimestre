@@ -1,3 +1,15 @@
+/*  
+  Fundacion Kinal
+  Centro educativo tecnico laboral Kinal
+  Electronica
+  Grado: Quinto
+  Sección: A
+  Curso: Taller de electronica digital y reparación de computadoras I
+  ombre: Edgar Leonel Ramírez Estrada
+  Carnet: 2019373 y 2019...
+  Proyecto: Sistema Embebido MQ2
+*/
+
 #include <LedControl.h>
 #include <Ticker.h>
 void sensor_de_humo(void);
