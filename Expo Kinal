@@ -1,0 +1,110 @@
+#include<Servo.h> //Librerias 
+#define bomb 13 //Directivas de preprocesador
+#define servo 5
+
+int a = 1; //Variables 
+int b = 1;
+int c = 1;
+int d = 1;
+int agua;
+char inf;
+int pulmin = 1000;
+int pulmax = 2000;
+
+void lectura_agua(); //Funciones 
+void lectura_buff();
+void bomba_agua();
+void buttons();
+void little();
+void medium();
+void huge();
+
+Servo serv_dispen; //Constructores 
+
+void setup() {
+  Serial.begin(9600); 
+  pinMode(bomb, OUTPUT);  //Se declaran los pines como salida o entrada (en caso de los analógicos no es necesario)
+  serv_dispen.attach(servo, pulmin, pulmax); //Esta funcion sirve para inicializar el servo
+}
+
+void loop() {
+  lectura_buff();  //Se ejecutan las funciones
+  buttons();
+  bomba_agua();
+  little();
+  medium();
+  huge();
+}
+
+void lectura_buff(){
+  if(Serial.available()>0){ //Si el buffer serial contienen informacion
+    inf = Serial.read();    //Esta informacion es almacenada en la variable tipo char
+    Serial.println(inf);    //Se imprime la informacion del buffer serial, en el monitor serial
+ }
+}
+
+void lectura_agua(){
+  agua = analogRead(A6); //La variable agua, sera igual a los datos analogicos leidos en el pin analogico 6
+  Serial.println(agua); //Se imprimen la variable agua, en el monitor serial
+  delay(500);
+}
+
+void buttons(){
+  if(inf=='A'){ //Si la informacion recibida es igual al caracter "A"
+    a = 2;      //La variable a es igual 2
+ }
+
+  if(inf=='B'){ //Si la informaciob recibida es igual al caracter "B"
+    b = 2;      //La variable b es igual 2
+ }
+
+  if(inf=='C'){ //Si la informaciob recibida es igual al caracter "C"
+    c = 2;      //La variable c es igual 2
+  }
+
+  if(inf=='D'){ //Si la informaciob recibida es igual al caracter "D"
+    d = 2;      //La variable d es igual 2
+  }
+}
+
+void bomba_agua(){
+    if(a==2){                  //Si la variable a es igual a "2"
+    digitalWrite(bomb, LOW);  //Se enciende el pin de la bomba de agua (en este caso un rele sirve como puente)
+    delay(1000);
+    lectura_agua();            //Se ejecuta la funcion
+    if(agua>250){              //Si la avariable agua es mayor a 250 (este valor indica si hay presencia de agua)
+      digitalWrite(bomb, HIGH); //Se apaga el pin de la bomba de agua
+      a = 1;                   //La variable a es igual a 1 (esto para evitar que se vuelva a repetir dicha accion)
+  }
+ }
+}
+
+void little(){
+  if(b==2){                    //Si la variable b es igual a 2
+    serv_dispen.write(0);      //La compuerta se habre
+    delay(4000);               
+    serv_dispen.write(80);     //La compuerta se cierra
+    delay(100);                
+    b = 1;
+  }
+}
+
+void medium(){
+  if(c==2){                    //Si la variable c es igual a 2
+    serv_dispen.write(0);      //La compuerta se habre
+    delay(8000);
+    serv_dispen.write(80);     //La compuerta se cierra
+    delay(100);
+    c = 1;
+  }
+}
+
+void huge(){
+  if(d==2){                    //Si la variable d es igual a 2
+    serv_dispen.write(0);      //La compuerta se habre
+    delay(12000);
+    serv_dispen.write(80);     //La compuerta se cierra
+    delay(100);
+    d = 1;
+  }
+}
