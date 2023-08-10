@@ -6,7 +6,8 @@
  Sección: A
  Curso: Taller de Electrónica Digital y Reparación de Computadoras I
  Nombres: Luis Alexander Racanac Canahui / Edgar Leonel Ramírez Estrada / Álvaro Anzueto Rodas / Sebastián Bocaleti Aguilar 
- Car
+ Carné: 
+*/
 #include <Servo.h> // Se incluye la libreria para el control del Servo
 #define Rele 12 //Pin para rele
 #define servo 9 //Pin para servo
